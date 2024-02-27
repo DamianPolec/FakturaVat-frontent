@@ -6,8 +6,6 @@ export function nipValidator(): ValidatorFn {
     const value = control.value;
 
     if (value) {
-     
-
       if (value.length !== 10) {
         return { invalidNipLength: true }; 
       }
