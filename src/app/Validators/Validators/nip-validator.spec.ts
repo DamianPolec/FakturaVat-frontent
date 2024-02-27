@@ -2,11 +2,11 @@ import { FormControl } from '@angular/forms';
 import { nipValidator } from './nip-validator';
 
 describe('NIP Validator', () => {
-  it('should return null for a valid NIP', () => {
-    const control = new FormControl('1234567890');
+  it('should return error object for empty NIP', () => {
+    const control = new FormControl('');
     const validatorFn = nipValidator();
     const result = validatorFn(control);
-    expect(result).toBeNull();
+    expect(result).toEqual({ required: true });
   });
 
   it('should return error object for invalid NIP length', () => {
@@ -21,5 +21,12 @@ describe('NIP Validator', () => {
     const validatorFn = nipValidator();
     const result = validatorFn(control);
     expect(result).toEqual({ nonNumericNip: true });
+  });
+
+  it('should return null for a valid NIP', () => {
+    const control = new FormControl('1234567890');
+    const validatorFn = nipValidator();
+    const result = validatorFn(control);
+    expect(result).toBeNull();
   });
 });
