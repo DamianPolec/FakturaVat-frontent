@@ -1,0 +1,75 @@
+<app-layout class="invoice">
+  <form [formGroup]="invoiceForm" (ngSubmit)="generateInvoice()">
+    <h2>Informacje ogólne:</h2>
+    <div class="invoice__grid">
+      <mat-form-field appearance="fill">
+        <mat-label>Numer faktury</mat-label>
+        <input matInput type="text" formControlName="invoiceNumber">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Data wystawienia faktury</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="invoiceDate">
+        <mat-datepicker-toggle matSuffix [for]="picker" />
+        <mat-datepicker #picker />
+      </mat-form-field>
+    </div>
+
+    <h2>Informacje o wystawiającym fakturę:</h2>
+    <div class="invoice__grid">
+      <mat-form-field appearance="fill">
+        <mat-label>Nazwa firmy</mat-label>
+        <input matInput type="text" formControlName="issuerCompanyName">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>NIP</mat-label>
+        <input matInput type="text" formControlName="issuerNip">
+      </mat-form-field>
+    </div>
+
+    <h2>Informacje o odbiorcy faktury:</h2>
+    <div class="invoice__grid">
+      <mat-form-field appearance="fill">
+        <mat-label>Imię i nazwisko</mat-label>
+        <input matInput type="text" formControlName="recipientName">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Data dokonania sprzedaży</mat-label>
+        <input matInput [matDatepicker]="saleDatePicker" formControlName="saleDate">
+        <mat-datepicker-toggle matSuffix [for]="saleDatePicker" />
+        <mat-datepicker #saleDatePicker />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Nazwa towaru/usługi</mat-label>
+        <input matInput type="text" formControlName="itemName">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Cena netto</mat-label>
+        <input matInput type="number" formControlName="netPrice">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Wartość podatku VAT</mat-label>
+        <input matInput type="number" formControlName="vatValue">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Cena brutto</mat-label>
+        <input matInput type="number" formControlName="grossPrice">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Ogólna kwota do zapłaty</mat-label>
+        <input matInput type="number" formControlName="totalAmount">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button mat-raised-button color="primary" type="submit" [disabled]="invoiceForm.invalid">Wyślij</button>
+    </div>
+  </form>
+</app-layout>
