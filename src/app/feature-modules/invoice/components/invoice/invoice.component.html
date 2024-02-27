@@ -32,7 +32,7 @@
     <div class="invoice__grid">
       <mat-form-field appearance="fill">
         <mat-label>Imię i nazwisko</mat-label>
-        <input matInput type="text" formControlName="recipientName">
+        <input matInput type="text"  formControlName="recipientName">
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -40,8 +40,8 @@
         <input matInput [matDatepicker]="saleDatePicker" formControlName="saleDate">
         <mat-datepicker-toggle matSuffix [for]="saleDatePicker" />
         <mat-datepicker #saleDatePicker />
+       
       </mat-form-field>
-
       <mat-form-field appearance="fill">
         <mat-label>Nazwa towaru/usługi</mat-label>
         <input matInput type="text" formControlName="itemName">

@@ -7,7 +7,7 @@ import { Invoice } from "../models/invoice.model";
     providedIn: 'root'
 })
 export class InvoiceService {
-    constructor(private readonly httpClient: HttpClient) {}
+    constructor(private readonly HttpClient: HttpClient) {}
 
     generateInvoice(invoice: Invoice): Observable<Invoice> {
         return of(invoice);

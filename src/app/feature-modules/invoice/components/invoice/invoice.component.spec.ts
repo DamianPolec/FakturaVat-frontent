@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { InvoiceComponent } from './invoice.component';
 
 describe('InvoiceComponent', () => {
@@ -8,7 +9,8 @@ describe('InvoiceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InvoiceComponent]
+      imports: [InvoiceComponent, HttpClientModule],
+      providers: [provideAnimationsAsync()]
     })
     .compileComponents();
     

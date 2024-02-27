@@ -9,6 +9,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { Invoice } from '../../models/invoice.model';
 import { InvoiceService } from '../../services/invoice.service';
 import { LayoutComponent } from '../../../../shared/components/layout/layout.component';
+import { CommonModule } from '@angular/common';
+import { nipValidator } from '../../../../Validators/Validators/nip-validator';
 
 @Component({
   selector: 'app-invoice',
@@ -21,17 +23,19 @@ import { LayoutComponent } from '../../../../shared/components/layout/layout.com
     MatNativeDateModule,
     FormsModule,
     ReactiveFormsModule,
-    LayoutComponent
+    LayoutComponent,
+    CommonModule
   ],
   templateUrl: './invoice.component.html',
   styleUrl: './invoice.component.scss'
 })
 export class InvoiceComponent {
+
   invoiceForm = this.formBuilder.group({
     invoiceNumber: ['', [Validators.required]],
     invoiceDate: [new Date(), [Validators.required]],
     issuerCompanyName: ['', [Validators.required]],
-    issuerNip: ['', [Validators.required]],
+    issuerNip: ['', [Validators.required, nipValidator()]],
     recipientName: ['', [Validators.required]],
     saleDate: [new Date(), [Validators.required]],
     itemName: ['', [Validators.required]],
